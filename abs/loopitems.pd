@@ -1,0 +1,45 @@
+#N canvas 316 96 1137 536 12;
+#X obj 43 19 inlet;
+#X obj 43 44 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 42 62 if-open-panda-project;
+#X obj 71 215 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 43 122 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 159 197 next;
+#X msg 211 145 1;
+#X obj 159 172 spigot 1;
+#X msg 123 225 0, f 2;
+#X obj 39 269 outlet;
+#X text 36 314 Outputs all pointers of items in timeline one by one.
+(Bang to strart);
+#X obj 43 92 t b b b;
+#X obj 38 171 pointer item;
+#X msg 66 118 traverse pd-main-win \, next;
+#X obj 120 272 outlet;
+#X obj 123 250 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 34 363 Left outlet outputs pointers. Right outlet outputs bang
+after last pointer.;
+#X obj 71 237 del \$1;
+#X text 34 411 Optional argument sets delay time between values.;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 11 0;
+#X connect 3 0 17 0;
+#X connect 5 0 12 0;
+#X connect 6 0 7 1;
+#X connect 7 0 5 0;
+#X connect 8 0 7 1;
+#X connect 8 0 15 0;
+#X connect 11 0 4 0;
+#X connect 11 1 13 0;
+#X connect 11 2 6 0;
+#X connect 12 0 3 0;
+#X connect 12 0 9 0;
+#X connect 12 1 3 0;
+#X connect 12 2 8 0;
+#X connect 13 0 12 0;
+#X connect 15 0 14 0;
+#X connect 17 0 7 0;

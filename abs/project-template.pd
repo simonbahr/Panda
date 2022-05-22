@@ -1,0 +1,251 @@
+#N canvas 44 517 423 505 12;
+#X declare -path /home/simon/Pd/Panda;
+#X declare -path /home/simon/Pd/Panda/abs;
+#X declare -path /home/simon/Pd/Panda/lib;
+#X text 144 229 NEW PANDA PROJECT;
+#N canvas 717 420 1100 660 panda-project 0;
+#N canvas 782 355 249 210 tempo 0;
+#X obj 88 12 r panda;
+#X obj 88 37 route panda-loadbang;
+#X obj 23 57 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 23 12 loadbang;
+#X obj 23 141 nbx 5 14 -1e+37 1e+37 0 1 empty empty (state_saving_nbx)
+0 -8 0 10 -262144 -1 -1 10 256;
+#X obj 147 70 r panda;
+#X obj 147 95 route tempo;
+#X msg 23 160 \; panda tempo \$1;
+#X msg 147 120 set \$1;
+#X obj 88 62 del 10;
+#X connect 0 0 1 0;
+#X connect 1 0 9 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 7 0;
+#X connect 5 0 6 0;
+#X connect 6 0 8 0;
+#X connect 8 0 4 0;
+#X connect 9 0 2 0;
+#X restore 100 185 pd tempo;
+#N canvas 600 118 662 632 main-win 0;
+#X obj 0 0 cnv 1 101 12 empty timegrid 0_________ 0 7 0 16 -159808
+-262144 0;
+#X obj 79 13 cnv 1 1 500 empty timeline empty 20 12 0 14 -159808 -66577
+0;
+#X obj 100 160 cnv 1 1 1 empty scanline empty 20 12 0 14 -262144 -66577
+0;
+#X restore 100 373 pd main-win;
+#X text 197 372 <-- main project window;
+#X obj 100 100 cnv 15 360 60 empty empty Panda-project 5 33 2 50 -232576
+-1 0;
+#X obj 419 125 cnv 15 70 35 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 429 115 cnv 15 50 35 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 424 119 cnv 15 60 35 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 425 122 cnv 20 20 20 empty empty empty 20 12 0 14 -1 -66577
+0;
+#X obj 430 130 cnv 10 10 10 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 451 144 cnv 6 6 12 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 448 147 cnv 6 12 6 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 449 146 cnv 6 10 8 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 450 145 cnv 6 8 10 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 432 132 cnv 6 6 6 empty empty empty 20 12 0 14 -1 -66577 0;
+#X obj 418 111 cnv 6 6 12 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 415 114 cnv 6 12 6 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 416 113 cnv 6 10 8 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 417 112 cnv 6 8 10 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#N canvas 960 341 912 321 init 0;
+#X obj 9 12 loadbang;
+#X obj 9 37 del 2;
+#X text 6 165 Panda asks if a project is open:;
+#X obj 6 188 r project-request;
+#X obj 6 213 s project-response;
+#X obj 301 17 r panda;
+#X obj 301 42 route dir;
+#X obj 301 67 symbol;
+#X obj 708 21 loadbang;
+#X msg 708 46 dir;
+#X obj 708 71 pdcontrol;
+#X msg 708 96 \; panda project-dir \$1;
+#X msg 9 62 \; panda project-loadbang \; panda open-project? 1 \; panda
+show-main-win \; panda show-pandac~mixer \; panda project-loadbang
+\;;
+#X msg 301 101 \; pd-declare-panda-path clear \; pd-declare-panda-path
+obj 0 0 declare -path \$1 \; pd-declare-panda-path obj 0 20 declare
+-path \$1/abs \; pd-declare-panda-path obj 0 40 declare -path \$1/lib
+\;;
+#X connect 0 0 1 0;
+#X connect 1 0 12 0;
+#X connect 3 0 4 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 13 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X restore 100 398 pd init;
+#X text 157 397 <-- project-loadbang-stuff;
+#N canvas 1658 497 262 214 loop 0;
+#X obj 88 12 r panda;
+#X obj 88 37 route panda-loadbang;
+#X obj 23 57 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 23 12 loadbang;
+#X obj 23 141 nbx 5 14 -1e+37 1e+37 0 1 empty empty (state_saving_nbx)
+0 -8 0 10 -262144 -1 -1 1 256;
+#X obj 147 70 r panda;
+#X msg 147 120 set \$1;
+#X obj 88 62 del 10;
+#X obj 147 95 route loop;
+#X msg 23 160 \; panda loop \$1;
+#X connect 0 0 1 0;
+#X connect 1 0 7 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 9 0;
+#X connect 5 0 8 0;
+#X connect 6 0 4 0;
+#X connect 7 0 2 0;
+#X connect 8 0 6 0;
+#X restore 100 234 pd loop;
+#N canvas 1657 541 263 216 volume 0;
+#X obj 88 12 r panda;
+#X obj 88 37 route panda-loadbang;
+#X obj 23 57 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 23 12 loadbang;
+#X obj 23 141 nbx 5 14 -1e+37 1e+37 0 1 empty empty (state_saving_nbx)
+0 -8 0 10 -262144 -1 -1 0.3 256;
+#X obj 147 70 r panda;
+#X msg 147 120 set \$1;
+#X obj 88 62 del 10;
+#X obj 147 95 route volume;
+#X msg 23 160 \; panda volume \$1;
+#X connect 0 0 1 0;
+#X connect 1 0 7 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 9 0;
+#X connect 5 0 8 0;
+#X connect 6 0 4 0;
+#X connect 7 0 2 0;
+#X connect 8 0 6 0;
+#X restore 100 258 pd volume;
+#N canvas 1657 585 263 216 mute 0;
+#X obj 88 12 r panda;
+#X obj 88 37 route panda-loadbang;
+#X obj 23 57 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 23 12 loadbang;
+#X obj 23 141 nbx 5 14 -1e+37 1e+37 0 1 empty empty (state_saving_nbx)
+0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 147 70 r panda;
+#X msg 147 120 set \$1;
+#X obj 88 62 del 10;
+#X obj 146 95 route mute;
+#X msg 23 160 \; panda mute \$1;
+#X connect 0 0 1 0;
+#X connect 1 0 7 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 9 0;
+#X connect 5 0 8 0;
+#X connect 6 0 4 0;
+#X connect 7 0 2 0;
+#X connect 8 0 6 0;
+#X restore 101 284 pd mute;
+#X text 99 164 <-- remember values -->;
+#N canvas 1519 870 345 210 timeline-position 0;
+#X obj 88 12 r panda;
+#X obj 88 37 route panda-loadbang;
+#X obj 23 57 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 23 12 loadbang;
+#X obj 23 141 nbx 5 14 -1e+37 1e+37 0 1 empty empty (state_saving_nbx)
+0 -8 0 10 -262144 -1 -1 79 256;
+#X obj 147 70 r panda;
+#X msg 147 120 set \$1;
+#X obj 88 62 del 10;
+#X obj 147 95 route timeline-position;
+#X msg 23 160 \; panda timeline-position \$1;
+#X connect 0 0 1 0;
+#X connect 1 0 7 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 9 0;
+#X connect 5 0 8 0;
+#X connect 6 0 4 0;
+#X connect 7 0 2 0;
+#X connect 8 0 6 0;
+#X restore 101 308 pd timeline-position;
+#N canvas 1470 347 450 300 declare-panda-path 0;
+#X obj 0 0 declare -path /home/simon/Pd/Panda;
+#X obj 0 20 declare -path /home/simon/Pd/Panda/abs;
+#X obj 0 40 declare -path /home/simon/Pd/Panda/lib;
+#X restore 100 424 pd declare-panda-path;
+#X text 255 425 <-- automatically filled with panda-path declare;
+#N canvas 498 635 586 368 pandac~mixer 0;
+#X restore 99 454 pd pandac~mixer;
+#X text 210 454 <-- pandac~mixer window;
+#N canvas 830 356 450 300 remember-pandac~channels 0;
+#X restore 101 336 pd remember-pandac~channels;
+#N canvas 754 385 249 210 performance-mode 0;
+#X obj 88 12 r panda;
+#X obj 88 37 route panda-loadbang;
+#X obj 23 57 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 23 12 loadbang;
+#X obj 23 141 nbx 5 14 -1e+37 1e+37 0 1 empty empty (state_saving_nbx)
+0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 147 70 r panda;
+#X msg 147 120 set \$1;
+#X obj 88 62 del 10;
+#X obj 147 95 route performance-mode;
+#X msg 23 160 \; panda performance-mode \$1;
+#X connect 0 0 1 0;
+#X connect 1 0 7 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 9 0;
+#X connect 5 0 8 0;
+#X connect 6 0 4 0;
+#X connect 7 0 2 0;
+#X connect 8 0 6 0;
+#X restore 159 285 pd performance-mode;
+#N canvas 762 399 262 214 length 0;
+#X obj 88 12 r panda;
+#X obj 88 37 route panda-loadbang;
+#X obj 23 57 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 23 12 loadbang;
+#X obj 23 141 nbx 5 14 -1e+37 1e+37 0 1 empty empty (state_saving_nbx)
+0 -8 0 10 -262144 -1 -1 500 256;
+#X obj 147 70 r panda;
+#X msg 147 120 set \$1;
+#X obj 88 62 del 10;
+#X obj 147 95 route length;
+#X msg 23 160 \; panda length \$1;
+#X connect 0 0 1 0;
+#X connect 1 0 7 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 9 0;
+#X connect 5 0 8 0;
+#X connect 6 0 4 0;
+#X connect 7 0 2 0;
+#X connect 8 0 6 0;
+#X restore 100 209 pd length;
+#X coords 0 -1 1 1 360 60 2 100 100;
+#X restore 5 6 pd panda-project;
+#X text 33 258 for info \, see https://www.simonbahr.de/panda;

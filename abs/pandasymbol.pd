@@ -1,0 +1,36 @@
+#N canvas 2467 155 969 522 12;
+#X obj 101 101 cnv 10 85 17 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 102 299 s panda;
+#X obj 102 212 symbol \$1;
+#X obj 102 -16 r panda;
+#X obj 102 12 route \$1;
+#X msg 102 271 \$1 \$2;
+#X obj 197 202 outlet;
+#X msg 102 63 set \$1;
+#X obj 158 36 inlet;
+#X symbolatom 101 100 12 0 0 0 - - -;
+#X obj 102 166 t b s;
+#X obj 102 237 pack s s;
+#X obj 100 100 cnv 1 87 2 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 100 117 cnv 1 87 2 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 185 100 cnv 1 2 19 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 100 100 cnv 1 2 19 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 102 37 symbol;
+#X connect 2 0 11 0;
+#X connect 3 0 4 0;
+#X connect 4 0 16 0;
+#X connect 5 0 1 0;
+#X connect 7 0 9 0;
+#X connect 8 0 16 0;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 10 1 6 0;
+#X connect 10 1 11 1;
+#X connect 11 0 5 0;
+#X connect 16 0 7 0;
+#X coords 0 -1 1 1 87 19 2 100 100;

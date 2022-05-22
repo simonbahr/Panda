@@ -1,0 +1,44 @@
+#N canvas 530 411 705 357 12;
+#X obj 3 158 namecanvas canvas\$0;
+#N canvas 104 96 1125 331 sub 0;
+#X obj 95 114 sel \$1;
+#X obj 95 88 symbol \$1;
+#X obj 95 34 loadbang;
+#X obj 134 139 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 95 139 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 26 137 is symbol;
+#X text 154 137 is number;
+#X obj 70 181 f \$0;
+#X obj 280 174 f \$0;
+#X obj 280 199 pack;
+#X obj 281 147 t b b;
+#X obj 319 173 list append \$1;
+#X msg 68 221 \; canvas\$1 obj 0 0 r \\\$1 \; canvas\$1 connect 5 0
+4 0 \;;
+#X msg 280 222 \; canvas\$1 obj 0 0 r \$1- \; canvas\$1 connect 5 0
+4 1 \; \$1- \$2 \;;
+#X connect 0 0 4 0;
+#X connect 0 1 3 0;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;
+#X connect 3 0 10 0;
+#X connect 4 0 7 0;
+#X connect 7 0 12 0;
+#X connect 8 0 9 0;
+#X connect 9 0 13 0;
+#X connect 10 0 8 0;
+#X connect 10 1 11 0;
+#X connect 11 0 9 1;
+#X restore 147 158 pd sub;
+#X obj 5 130 outlet;
+#X obj 5 34 inlet;
+#X obj 5 103 f;
+#X obj 0 0 r 1195-;
+#X text 230 36 receive or float:;
+#X text 233 59 acts like a float object when given a number;
+#X text 233 78 acts like a receive object when given a symbol;
+#X connect 3 0 4 0;
+#X connect 4 0 2 0;
+#X connect 5 0 4 1;

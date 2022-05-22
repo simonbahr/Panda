@@ -1,0 +1,17 @@
+#N canvas 1277 373 643 390 12;
+#X obj 16 83 item \$1;
+#X obj 16 108 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 16 128 sel 1;
+#X obj 93 129 rorf \$2;
+#X obj 93 95 loadbang;
+#X obj 16 153 f;
+#X msg 16 178 \; panda tempo \$1;
+#X text 11 14 Arg1: name / Arg2: project tempo to set on activation
+of item;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 5 0;
+#X connect 3 0 5 1;
+#X connect 4 0 3 0;
+#X connect 5 0 6 0;

@@ -1,0 +1,51 @@
+#N canvas 510 376 1172 469 12;
+#X obj 138 71 inlet;
+#X obj 218 179 outlet;
+#X obj 138 99 route set;
+#X obj 138 124 symbol;
+#X text 317 120 a setable expression object.;
+#X text 317 147 e.g. send msg [set $f1+$f2] to change formula;
+#X text 317 172 to evaluate \, send all arguments in one msg \, like
+[1 2] --> 3;
+#X obj 28 22 loadbang;
+#X msg 28 47 args;
+#X obj 28 72 pdcontrol;
+#X obj 37 128 list length;
+#X obj 28 97 t a a;
+#X obj 37 153 != 0;
+#X obj 28 182 spigot;
+#N canvas 48 96 450 300 \$0-sub 1;
+#X obj 74 17 r inlet;
+#X obj 70 56 expr $f1*100;
+#X obj 61 85 s outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore 263 49 pd \$0-sub;
+#X obj 171 175 f \$0;
+#X obj 138 149 t s b;
+#X obj 138 201 pack s f;
+#X obj 5 91 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 218 129 s \$0-inlet;
+#X obj 218 154 r \$0-outlet;
+#X msg 138 226 \; pd-\$2-sub clear \; pd-\$2-sub obj 0 0 r \$2-inlet
+\; pd-\$2-sub obj 0 30 expr \$1 \; pd-\$2-sub obj 0 60 s \$2-outlet
+\; pd-\$2-sub connect 0 0 1 0 \; pd-\$2-sub connect 1 0 2 0 \;;
+#X connect 0 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 1 19 0;
+#X connect 3 0 16 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 11 0;
+#X connect 9 0 18 0;
+#X connect 10 0 12 0;
+#X connect 11 0 13 0;
+#X connect 11 1 10 0;
+#X connect 12 0 13 1;
+#X connect 13 0 3 0;
+#X connect 15 0 17 1;
+#X connect 16 0 17 0;
+#X connect 16 1 15 0;
+#X connect 17 0 21 0;
+#X connect 20 0 1 0;
