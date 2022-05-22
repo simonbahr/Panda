@@ -1,22 +1,24 @@
 # Panda
+
 Algorithmic Soundmaking Application written in Pure Data
-# What is Panda?
+
+## What is Panda? 
 
 Panda is a program written and running in [Pure Data](https://puredata.info/). It enables algorithmic sound processing in realtime for both composition and performance. It can be used as a standalone software via a its graphical user interface, but can also be easily integrated into and extended by other Pd-programs. Most generally speaking, Panda can be seen as a sequencer for algorithms rather than soundfiles.
 
-# Quickstart
+## Quickstart
 
 If you want to use Panda, simply install [Pure Data](https://puredata.info/) (Pd) on your computer. Pd is free and cross-platform (Linux/Mac/Windows). Then download Panda [here](https://github.com/simonbahr/Panda) and place it in a directory where Pd will find it. (On unix systems this will usually be the ,,Pd"-directory in your home directory.) On Linux, you can use ,,Panda.desktop" to integrate Panda into your launcher. Otherwise, simply load ,,Panda.pd" from Pd.
 
-# General Usage
+## General Usage
 
 When using Panda, two Pd-files must at least be open: Panda.pd (the main program window) and a Panda-project.
 
 A Panda-project can be created using the ,,New Project"-button in the main program window. Although any Pd-file may serve as a Panda-project, it is strongly recommended to always start new projects using this feature unless you really know what you are doing: The projects timeline and pandac\~mixer will be stored in the project file rather than Panda itself, so Panda may not properly work if you create projects another way.
 
-## Panda-objects, Items and the Timeline
+### Panda-objects, Items and the Timeline
 
-Once you have created a Panda-project, you can start to add Panda-objects: Panda-objects are specific Pd-abstractions that meet certain criteria (see [\[sec:List-of-Panda-objects\]](#sec:List-of-Panda-objects){reference-type="ref" reference="sec:List-of-Panda-objects"} for a list of existing Panda-objects / see [\[sec:Creating-new-objects\]](#sec:Creating-new-objects){reference-type="ref" reference="sec:Creating-new-objects"} on how to create one). All Panda-objects take a unique name as first argument, followed by any amount of numbers or symbols. A numeric value can usually be replaced by a symbol, allowing the user to sent a continuous stream of numbers to that symbol (like: \[s symbol\] / this is possible using the \[rorf\]-object). This way, Panda-objects that generate data can be used to modulate Panda-objects generating sound, etc.
+Once you have created a Panda-project, you can start to add Panda-objects: Panda-objects are specific Pd-abstractions that meet certain criteria (see ,,List of Panda-objects" and ,,Creating new objects for Panda" below). All Panda-objects take a unique name as first argument, followed by any amount of numbers or symbols. A numeric value can usually be replaced by a symbol, allowing the user to sent a continuous stream of numbers to that symbol (like: \[s symbol\] / this is possible using the \[rorf\]-object). This way, Panda-objects that generate data can be used to modulate Panda-objects generating sound, etc.
 
 Along with a Panda-object, you must usually create one or more corresponding items for it to take any effect. An item can be created in the main window, by specifying its name, a length (in pixels) and hit ,,Add". Items show up in the timeline-window when created.
 
@@ -24,7 +26,7 @@ The timeline-window can be opened using the ,,Timeline"-button in the main-windo
 
 In the main-window, you can set the current position of the timeline, the playback tempo, the project length in pixels and whether the project should loop or not. You can also start and stop playback here. (Playback can also be started by pressing Ctrl+Space and stopped pressing Space again.) When an item becomes active during playback, the corresponding Panda-object will be activated. If this object produces sound, you should be able to hear its output via pandac\~.
 
-## pandac\~ and pandac\~mixer
+### pandac\~ and pandac\~mixer
 
 The pandac\~ is Pandas main audio output. It comes with a a mixer that can be opened via the main-window. Any newly generated Panda-object will be automatically create its own channel in the pandac\~mixer. (Up to this point, deleting a Panda-object will not automatically delete its corresponding channel in the mixer, this must be done by hand. Also, any new channel will be created in the upper left corner of the mixer window, meaning channels will overlay one another if not dragged to a different position.)
 
@@ -32,21 +34,21 @@ A channel in pandac\~mixer can be used to set the audio output of the Panda-obje
 
 In the main-window, the pandac\~ displays a waveform of the current output of the left and right channels and provides main mute and volume controls as well as an option to quickly record the output.
 
-## Generating Multiple Items[]{#subsec:Generating-Multiple-Items label="subsec:Generating-Multiple-Items"}
+### Generating Multiple Items
 
 By clicking on the ,,Add more\..."-button in the item generation section of the main-window, you can open up the ,,Add Multiple Items"-window. You can use it to generate multiple items in a row, create some items in random positions or specify formulas to calculate positions and lengths of multiple items.
 
-## Quantisation
+### Quantisation
 
-Using the quantise-menu (,,Quantise\..."-button in main-window), you can generate a custom grid of qlines (= quantisation lines), similarly to creating multiple items (see [\[subsec:Generating-Multiple-Items\]](#subsec:Generating-Multiple-Items){reference-type="ref" reference="subsec:Generating-Multiple-Items"}). You can choose the stickiness of the grid and than quantise all items accordingly. This can be a very powerfull tool, e. g. when combined with the option to generate multiple items in random positions and quantise them to a more or less sticky grid, etc. It is also possible to only quantise all selected items (meaning: selected in timeline-window).
+Using the quantise-menu (,,Quantise\..."-button in main-window), you can generate a custom grid of qlines (= quantisation lines), similarly to creating multiple items. You can choose the stickiness of the grid and than quantise all items accordingly. This can be a very powerfull tool, e. g. when combined with the option to generate multiple items in random positions and quantise them to a more or less sticky grid, etc. It is also possible to only quantise all selected items (meaning: selected in timeline-window).
 
-## Performance Mode
+### Performance Mode
 
-In Performance Mode, the timeline in the timeline-window will be accompanied by its horizontal sibling: the scanline. Both can be programmed to react to any sort of control input accessible in Pd. Items will be activated when colliding with the timeline OR the scanline. This two-dimensional control can be used to freely combine different Panda-objects for generating control data with Panda-objects producing sound. Other functionality like tempo, playback (on/off), loop, etc. may also be controlled live (see [\[sec:List-of-Panda-messages\]](#sec:List-of-Panda-messages){reference-type="ref" reference="sec:List-of-Panda-messages"} for a list of available messages to sent to Panda and link them to whatever input you have).
+In Performance Mode, the timeline in the timeline-window will be accompanied by its horizontal sibling: the scanline. Both can be programmed to react to any sort of control input accessible in Pd. Items will be activated when colliding with the timeline OR the scanline. This two-dimensional control can be used to freely combine different Panda-objects for generating control data with Panda-objects producing sound. Other functionality like tempo, playback (on/off), loop, etc. may also be controlled live (see ,,List of Panda messages").
 
-# List of Panda-objects[]{#sec:List-of-Panda-objects label="sec:List-of-Panda-objects"}
+## List of Panda-objects
 
-#### Sound Objects
+#### Sound Objects {#sound-objects .unnumbered}
 
   ------------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   soundplay\~   A sample player. Outputs stereo sound via pandac\~ and to \[r\~ {itemname}-1\] / \[r\~ {itemname}-2\]\
@@ -62,7 +64,7 @@ In Performance Mode, the timeline in the timeline-window will be accompanied by 
 
   ------- --------------------------------------------
 
-# List of other abstractions
+## List of other abstractions
 
   item            The item-object is used to turn a normal pd-abstraction into a Panda-object. (It must always be defined as \[item \$1\] in order to tell Panda the correct name of the instance when the abstraction is used in a project.)
   --------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -70,7 +72,7 @@ In Performance Mode, the timeline in the timeline-window will be accompanied by 
   pandaswitch\~   The pandaswitch\~-object is used to turn audio output of a Panda-object on and off, depending on its activity: Its left inlet takes in sound and outputs it only when its right input is toggled on (usually by the output value of the corresponding item-object). Its right outlet can be safely connected to a switch-object to turn off DSP for the abstraction, because it is delayed in order to prevent clicks.
   rorf            ,,rorf" stands for: receive or float. The object can either take a number or a symbol as argument. If a number is given, it will output that number when loaded (as an initial value). If a symbol is given, it will behave just like a receive object and output values sent to it. Using this abstraction, arguments of Panda-objects can take either be set to a static value or linked to any other data coming in via the given receive channel.
 
-# List of available keyboard-shortcuts
+## List of available keyboard-shortcuts
 
   Ctrl+Space          toggle playback on / off
   ------------------- ----------------------------------
@@ -80,7 +82,7 @@ In Performance Mode, the timeline in the timeline-window will be accompanied by 
   Ctrl+Arrow left     jump to position 0
   Ctrl+Shift (left)   toggle loop on / off
 
-# List of Panda messages[]{#sec:List-of-Panda-messages label="sec:List-of-Panda-messages"}
+## List of Panda messages
 
 You can send the messages below to panda (like: \[s panda\]):
 
@@ -137,7 +139,7 @@ You can send the messages below to panda (like: \[s panda\]):
   set-fade-out-duration      Set duration for fade-out in pandaswitch\~.
   debug                      Print all Panda messages for debugging.
 
-# Creating new objects for Panda[]{#sec:Creating-new-objects label="sec:Creating-new-objects"}
+## Creating new objects for Panda
 
 Creating new Panda-objects is as easy as writing any other PD-patch, as long as the following criteria are met:
 
