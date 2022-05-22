@@ -2,6 +2,8 @@
 
 Algorithmic Soundmaking Application written in Pure Data
 
+![screenshot](url "https://github.com/simonbahr/Panda/screenshot.jpg")
+
 ## What is Panda? 
 
 Panda is a program written and running in [Pure Data](https://puredata.info/). It enables algorithmic sound processing in realtime for both composition and performance. It can be used as a standalone software via a its graphical user interface, but can also be easily integrated into and extended by other Pd-programs. Most generally speaking, Panda can be seen as a sequencer for algorithms rather than soundfiles.
