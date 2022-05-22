@@ -2,7 +2,7 @@
 
 Algorithmic Soundmaking Application written in Pure Data
 
-![screenshot](url "https://github.com/simonbahr/Panda/screenshot.jpg")
+![screenshot](https://github.com/simonbahr/Panda/blob/main/screenshot.jpg)
 
 ## What is Panda? 
 
