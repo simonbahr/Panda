@@ -8,7 +8,7 @@ Panda is a program written and running in [Pure Data](https://puredata.info/). I
 
 ## Quickstart
 
-If you want to use Panda, simply install [Pure Data](https://puredata.info/) (Pd) on your computer. Pd is free and cross-platform (Linux/Mac/Windows). Then download Panda [here](https://github.com/simonbahr/Panda) and place it in a directory where Pd will find it. (On unix systems this will usually be the ,,Pd"-directory in your home directory.) On Linux, you can use ,,Panda.desktop" to integrate Panda into your launcher. Otherwise, simply load ,,Panda.pd" from Pd.
+If you want to use Panda, simply install [Pure Data](https://puredata.info/) (Pd) on your computer. Pd is free and cross-platform (Linux/Mac/Windows). Then download Panda and place it in a directory where Pd will find it. (On unix systems this will usually be the ,,Pd"-directory in your home directory.) On Linux, you can use ,,Panda.desktop" to integrate Panda into your launcher. Otherwise, simply load ,,Panda.pd" from Pd.
 
 ## Doc
 
